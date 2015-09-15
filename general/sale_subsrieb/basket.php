@@ -156,8 +156,8 @@ class ItbasketSubsrieb{
     }
 
     public static function Send($EventMessage = NULL,$experation = NULL,$sort = array("ID" => "ASC"), $limit = NULL){
-        if(! $EventMessage){
-            //return FALSE;
+				if(! $EventMessage){
+            $EventMessage = 'SENDWISHLIST';
         }
         $siteUrl = 'http://'.SITE_SERVER_NAME;
         $arError = array();
@@ -167,7 +167,7 @@ class ItbasketSubsrieb{
             if(! empty($UserProduct['PRODUCTS']) AND $UserProduct['USER']){
                 $strListProduct = '<ul>';
                 foreach($UserProduct['PRODUCTS'] as $arProduct){
-                    $_strListProduct = '<li><a href="#SITE_URL#/#DETAIL_PAGE_URL#">#NAME#</a></li>';
+                    $_strListProduct = '<li><a href="#SITE_URL##DETAIL_PAGE_URL#">#NAME#</a></li>';
 
                     $strListProduct .= str_replace(array("#SITE_URL#", "#DETAIL_PAGE_URL#","#NAME#"),
                                                    array($siteUrl, $arProduct['DETAIL_PAGE_URL'], $arProduct['NAME']),
@@ -179,14 +179,17 @@ class ItbasketSubsrieb{
                                      "USER_EMAIL" => $UserProduct['USER']["EMAIL"],
                                      "PRODUCTS_LIST" => $strListProduct);
                 $arrSITE = array(SITE_ID);
-                if(CEvent::Send("SENDWISHLIST", $arrSITE, $arMessageFields)){
+                if(CEvent::Send($EventMessage, $arrSITE, $arMessageFields)){
                     $send++;
                 }else{
                     $arError[] = 'NOSEND USER_ID:'.$UserProduct['USER']['ID'];
                 }
                 if(! empty($arError)){
-
-                }
+									  // можно записать ошибки влог или журнал
+										return 'OK:'.$send.',Errors.'.implode(',',$arError);
+                }else{
+									return 'OK:'.$send;
+								}
             }
         }
 

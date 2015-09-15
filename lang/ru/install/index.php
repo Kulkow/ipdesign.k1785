@@ -11,4 +11,6 @@ $MESS["IT_BASKET_SENDER_USER_EMAIL"] = "Email пользователя";
 $MESS["IT_BASKET_SENDER_PRODUCTS_LIST"] = "Список товаров вишлиста";
 $MESS["IT_BASKET_SENDER_TEMPLATE_HELLO"] = "Добрый день";
 $MESS["IT_BASKET_SENDER_TEMPLATE_WHISHLIST"] = "В вашем вишлисте хранятся товары";
+$MESS["IT_SENDER_MESSAGE_SUBJECT"] = "В вашем вишлисте хранятся товары с";
+
 ?>

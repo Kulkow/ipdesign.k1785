@@ -60,9 +60,10 @@ CModule::AddAutoloadClasses(
 	$MODULE_ID,
 	array(
 		"CSaleActionCtrlBasketMain" => "general/sale_discount/basket.php",
-		"ItSaleDiscountActionApply" => "general/sale_discount/basket.php",
-		//"CatalogCondCtrlUserProps" => "general/sale_discount/basket.php",
-		//"ItbasketSubsrieb"				=>  "general/sale_subrieb/basket.php",
+		"ItSaleDiscountActionApply" => "general/sale_discount/itdiscount.php",
+		"CatalogCondCtrlUserProps" => "general/sale_discount/basket.php",
+		"ItbasketSubsrieb"				=>  "general/sale_subsrieb/basket.php",
 	)
 );
+//require_once('general/sale_discount/itdiscount.php');
 ?>
